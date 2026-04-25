@@ -61,7 +61,7 @@ const SEED_STORE = [
   { id:"s4", name:"Comer en Clase", desc:"Permiso para comer durante la clase", price:15, cat:"Privilegio", icon:"🍎", stock:99 },
   { id:"s5", name:"Escuchar Música", desc:"Permiso para escuchar música en clase", price:10, cat:"Privilegio", icon:"🎧", stock:99 },
   { id:"s6", name:"Solución a un Ejercicio", desc:"El profesor te da la solución de un ejercicio", price:50, cat:"Académico", icon:"💡", stock:99 },
-  { id:"s7", name:"Tiempo Libre 10 min", desc:"10 minutos de tiempo libre en clase", price:10, cat:"Privilegio", icon:"⏰", stock:99 },
+  { id:"s7", name:"Tiempo Libre 10 min", desc:"10 minutos de tiempo libre en clase", price:50, cat:"Privilegio", icon:"⏰", stock:99 },
 ];
 
 const SEED_TXS = [
