@@ -1,4 +1,6 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { db as firestore } from "./firebase";
+import { doc, getDoc, setDoc, onSnapshot, collection, getDocs } from "firebase/firestore";
 
 // ════════════════════════════════════════════
 // DATOS INICIALES
@@ -78,11 +80,17 @@ const SEED_TXS = [
 // ════════════════════════════════════════════
 const db = {
   async get(k) {
-    try { const r = await window.storage.get(k); return r ? JSON.parse(r.value) : null; }
-    catch { return null; }
+    try {
+      const ref = doc(firestore, "cosmobank", k);
+      const snap = await getDoc(ref);
+      return snap.exists() ? snap.data().value : null;
+    } catch { return null; }
   },
   async set(k, v) {
-    try { await window.storage.set(k, JSON.stringify(v)); } catch {}
+    try {
+      const ref = doc(firestore, "cosmobank", k);
+      await setDoc(ref, { value: v });
+    } catch(e) { console.error("Firebase set error:", e); }
   }
 };
 
