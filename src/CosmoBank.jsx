@@ -1241,7 +1241,7 @@ function SavingsScreen({ currentUser, savings, onDepositSavings, onWithdrawSavin
   const [amount, setAmount] = useState("");
   const [confirm, setConfirm] = useState(false);
   const sv = savings.find(s=>s.userId===currentUser.id);
-  const interest = sv ? Math.floor(sv.amount * 0.0925) : 0;
+  const interest = 0; // El interés solo lo aplica el profesor mensualmente
   const myTxs = transactions.filter(t=>(t.from===currentUser.id||t.to===currentUser.id)&&t.type==="savings").slice(0,10);
 
   const handleDeposit = async () => {
@@ -1273,7 +1273,7 @@ function SavingsScreen({ currentUser, savings, onDepositSavings, onWithdrawSavin
       {/* Info box */}
       <div style={{margin:"0 16px 20px", background:"rgba(0,229,160,0.07)", border:"1px solid rgba(0,229,160,0.2)", borderRadius:14, padding:"12px 16px", fontSize:12, color:"rgba(255,255,255,0.7)", lineHeight:1.7}}>
         <span style={{color:"#00E5A0", fontWeight:700}}>¿Cómo funciona?</span><br/>
-        Deposita CosmoCoins en tu alcancía y gana un <strong style={{color:"#E8187D"}}>9.25% de interés mensual</strong>. El profesor aplica el interés cada mes. Puedes retirar todo cuando quieras.
+        Deposita CosmoCoins en tu alcancía y gana un <strong style={{color:"#E8187D"}}>9.25% de interés mensual</strong>. El profesor aplica el interés una vez al mes. Al retirar recibes lo que tienes ahorrado incluyendo el interés que ya fue aplicado.
       </div>
 
       {/* Deposit form */}
@@ -1293,12 +1293,12 @@ function SavingsScreen({ currentUser, savings, onDepositSavings, onWithdrawSavin
         <div style={{padding:"0 16px 16px"}}>
           {!confirm ? (
             <button className="btn btn-outline" onClick={()=>setConfirm(true)}>
-              💸 Retirar todo ({sv.amount + interest} CC con interés)
+              💸 Retirar todo ({sv.amount} CC
             </button>
           ) : (
             <div style={{background:"rgba(232,24,125,0.08)", border:"1px solid rgba(232,24,125,0.3)", borderRadius:14, padding:16}}>
               <div style={{fontWeight:700, marginBottom:8, textAlign:"center"}}>¿Confirmas el retiro?</div>
-              <div style={{fontSize:13, color:"rgba(255,255,255,0.6)", textAlign:"center", marginBottom:14}}>Recibirás <strong style={{color:"#E8187D"}}>{sv.amount} CC</strong> + <strong style={{color:"#00E5A0"}}>{interest} CC</strong> de interés</div>
+              <div style={{fontSize:13, color:"rgba(255,255,255,0.6)", textAlign:"center", marginBottom:14}}>Recibirás <strong style={{color:"#E8187D"}}>{sv.amount} CC</strong> de tu alcancía</div>
               <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:10}}>
                 <button className="btn btn-outline" style={{padding:10}} onClick={()=>setConfirm(false)}>Cancelar</button>
                 <button className="btn btn-gold" style={{padding:10}} onClick={()=>{onWithdrawSavings();setConfirm(false);}}>Confirmar</button>
@@ -1603,15 +1603,14 @@ export default function CosmoBank() {
   const withdrawSavings = async () => {
     const sv = savings.find(s=>s.userId===currentUser.id);
     if (!sv || sv.amount <= 0) { showToast("Tu alcancía está vacía ❌","error"); return; }
-    const interest = Math.floor(sv.amount * 0.0925);
-    const total = sv.amount + interest;
+    const total = sv.amount;
     const now = new Date().toISOString();
     const newUsers = users.map(u=>u.id===currentUser.id?{...u,balance:u.balance+total}:u);
     const newSavings = savings.filter(s=>s.userId!==currentUser.id);
-    const tx = { id:genId("t"), from:"savings", to:currentUser.id, amount:total, type:"savings", desc:`🐷 Retiro alcancía: ${sv.amount} CC + ${interest} CC interés (9.25%)`, date:now };
+    const tx = { id:genId("t"), from:"savings", to:currentUser.id, amount:total, type:"savings", desc:`🐷 Retiro alcancía: ${sv.amount} CC`, date:now };
     await saveUsers(newUsers); await saveSavings(newSavings); await saveTxs([tx,...transactions]);
     setCurrentUser(newUsers.find(u=>u.id===currentUser.id));
-    showToast(`✅ Retiraste ${total} CC (incluye ${interest} CC de interés)`);
+    showToast(`✅ Retiraste ${total} CC de tu alcancía`);
   };
 
   const applyInterest = async () => {
