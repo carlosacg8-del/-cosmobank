@@ -463,17 +463,18 @@ function Stars() {
 // ════════════════════════════════════════════
 // LOGIN SCREEN
 // ════════════════════════════════════════════
-function LoginScreen({ onLogin, onRegister }) {
-  const [tab] = useState("login");
-  const [form, setForm] = useState({ username:"", password:"", name:"" });
+function LoginScreen({ onLogin }) {
+  const [form, setForm] = useState({ username:"", password:"" });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handle = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
     await new Promise(r => setTimeout(r, 400));
-    onLogin(form.username, form.password);
-    else await onRegister(form.name, form.username, form.password);
+    const ok = await onLogin(form.username, form.password);
+    if (!ok) setError("Usuario o contraseña incorrectos");
     setLoading(false);
   };
 
@@ -492,14 +493,7 @@ function LoginScreen({ onLogin, onRegister }) {
         <div style={{fontSize:14, color:"rgba(255,255,255,0.85)", letterSpacing:"0.5px", fontStyle:"italic", marginBottom:24, fontFamily:"Poppins,sans-serif"}}>Tus conquistas, nuestro respaldo.</div>
       </div>
       <div className="login-card">
-
         <form onSubmit={handle}>
-          {tab === "register" && (
-            <div className="form-group">
-              <label className="form-label">Nombre completo</label>
-              <input className="form-input" placeholder="Ej: Ana García" value={form.name} onChange={F("name")} required />
-            </div>
-          )}
           <div className="form-group">
             <label className="form-label">Usuario</label>
             <input className="form-input" placeholder="Ej: Ana.Velez" value={form.username} onChange={F("username")} required autoCapitalize="none" />
@@ -508,17 +502,11 @@ function LoginScreen({ onLogin, onRegister }) {
             <label className="form-label">Contraseña</label>
             <input className="form-input" type="password" placeholder="••••••••" value={form.password} onChange={F("password")} required />
           </div>
+          {error && <div style={{color:"#FF4D6D", fontSize:13, marginBottom:12, textAlign:"center"}}>{error}</div>}
           <button className="btn btn-gold" type="submit" disabled={loading}>
             {loading ? "⏳ Entrando..." : "🚀 Ingresar"}
           </button>
         </form>
-        {true && (
-          <div style={{marginTop:20, padding:16, background:"rgba(255,255,255,0.03)", borderRadius:12, fontSize:12, color:"var(--text3)"}}>
-            <div style={{fontWeight:700, marginBottom:8, color:"var(--text2)"}}>👤 Cuentas de prueba:</div>
-            <div>📚 Estudiante: <b style={{color:"var(--gold)"}}>ana / 1234</b></div>
-            <div>👨‍🏫 Profesor: <b style={{color:"var(--gold)"}}>profesor / cosmo2024</b></div>
-          </div>
-        )}
       </div>
     </div>
   );
@@ -1639,7 +1627,7 @@ export default function CosmoBank() {
       <style>{CSS}</style>
       <Stars />
       {toast && <div className={`toast toast-${toast.type}`}>{toast.msg}</div>}
-      {screen === "login" && <LoginScreen onLogin={login} onRegister={register} />}
+      {screen === "login" && <LoginScreen onLogin={login} />}
       {screen === "app" && (
         <AppShell
           currentUser={currentUser} users={users} transactions={transactions}
