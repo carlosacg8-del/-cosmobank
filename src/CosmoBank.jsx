@@ -464,7 +464,7 @@ function Stars() {
 // LOGIN SCREEN
 // ════════════════════════════════════════════
 function LoginScreen({ onLogin, onRegister }) {
-  const [tab, setTab] = useState("login");
+  const [tab] = useState("login");
   const [form, setForm] = useState({ username:"", password:"", name:"" });
   const [loading, setLoading] = useState(false);
 
@@ -472,7 +472,7 @@ function LoginScreen({ onLogin, onRegister }) {
     e.preventDefault();
     setLoading(true);
     await new Promise(r => setTimeout(r, 400));
-    if (tab === "login") onLogin(form.username, form.password);
+    onLogin(form.username, form.password);
     else await onRegister(form.name, form.username, form.password);
     setLoading(false);
   };
@@ -492,10 +492,7 @@ function LoginScreen({ onLogin, onRegister }) {
         <div style={{fontSize:14, color:"rgba(255,255,255,0.85)", letterSpacing:"0.5px", fontStyle:"italic", marginBottom:24, fontFamily:"Poppins,sans-serif"}}>Tus conquistas, nuestro respaldo.</div>
       </div>
       <div className="login-card">
-        <div className="login-tabs">
-          <div className={`login-tab ${tab==="login"?"active":""}`} onClick={()=>setTab("login")}>Ingresar</div>
-          <div className={`login-tab ${tab==="register"?"active":""}`} onClick={()=>setTab("register")}>Registrarse</div>
-        </div>
+
         <form onSubmit={handle}>
           {tab === "register" && (
             <div className="form-group">
@@ -505,17 +502,17 @@ function LoginScreen({ onLogin, onRegister }) {
           )}
           <div className="form-group">
             <label className="form-label">Usuario</label>
-            <input className="form-input" placeholder={tab==="login" ? "Ej: ana" : "Crea tu usuario"} value={form.username} onChange={F("username")} required autoCapitalize="none" />
+            <input className="form-input" placeholder="Ej: Ana.Velez" value={form.username} onChange={F("username")} required autoCapitalize="none" />
           </div>
           <div className="form-group">
             <label className="form-label">Contraseña</label>
             <input className="form-input" type="password" placeholder="••••••••" value={form.password} onChange={F("password")} required />
           </div>
           <button className="btn btn-gold" type="submit" disabled={loading}>
-            {loading ? "⏳ Entrando..." : tab==="login" ? "🚀 Ingresar" : "✨ Crear cuenta"}
+            {loading ? "⏳ Entrando..." : "🚀 Ingresar"}
           </button>
         </form>
-        {tab === "login" && (
+        {true && (
           <div style={{marginTop:20, padding:16, background:"rgba(255,255,255,0.03)", borderRadius:12, fontSize:12, color:"var(--text3)"}}>
             <div style={{fontWeight:700, marginBottom:8, color:"var(--text2)"}}>👤 Cuentas de prueba:</div>
             <div>📚 Estudiante: <b style={{color:"var(--gold)"}}>ana / 1234</b></div>
