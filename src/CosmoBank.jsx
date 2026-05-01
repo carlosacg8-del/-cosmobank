@@ -57,13 +57,23 @@ const SEED_USERS = [
 ];
 
 const SEED_STORE = [
-  { id:"s1", name:"Salida al Baño", desc:"Permiso para salir al baño cuando quieras", price:5, cat:"Privilegio", icon:"🚻", stock:99 },
-  { id:"s2", name:"Cambio de Puesto", desc:"Elige tu puesto favorito por una semana", price:50, cat:"Privilegio", icon:"💺", stock:99 },
-  { id:"s3", name:"10% en una Nota", desc:"Suma 10% extra en tu próxima nota", price:20, cat:"Académico", icon:"📝", stock:99 },
-  { id:"s4", name:"Comer en Clase", desc:"Permiso para comer durante la clase", price:15, cat:"Privilegio", icon:"🍎", stock:99 },
-  { id:"s5", name:"Escuchar Música", desc:"Permiso para escuchar música en clase", price:10, cat:"Privilegio", icon:"🎧", stock:99 },
-  { id:"s6", name:"Solución a un Ejercicio", desc:"El profesor te da la solución de un ejercicio", price:50, cat:"Académico", icon:"💡", stock:99 },
-  { id:"s7", name:"Tiempo Libre 10 min", desc:"10 minutos de tiempo libre en clase", price:50, cat:"Privilegio", icon:"⏰", stock:99 },
+  { id:"s1",  name:"Salida al Baño",          desc:"Permiso de salida rápida sin afectar tu récord de permanencia en clase.",                                              price:10,  cat:"Nivel 1 - Básico",    icon:"🚻", stock:99 },
+  { id:"s2",  name:"Cambio de Puesto",         desc:"Derecho a elegir un lugar diferente por una sesión, siempre que no interfiera con el aprendizaje.",                   price:20,  cat:"Nivel 1 - Básico",    icon:"💺", stock:99 },
+  { id:"s3",  name:"DJ de la Tribu",           desc:"Elige la música ambiental (apta para el colegio) durante el trabajo autónomo de la clase.",                           price:30,  cat:"Nivel 1 - Básico",    icon:"🎵", stock:99 },
+  { id:"s4",  name:"Silla del Mentor",         desc:"Derecho a usar la silla especial de 'honor' del mentor durante la sesión.",                                           price:35,  cat:"Nivel 1 - Básico",    icon:"🪑", stock:99 },
+  { id:"s5",  name:"Pase de Cero Filas",       desc:"Ser el primero en salir al descanso o a la fila del refrigerio o transporte.",                                       price:50,  cat:"Nivel 1 - Básico",    icon:"🏃", stock:99 },
+  { id:"s6",  name:"10% Extra en una Nota",    desc:"Suma una décima a la calificación final de un taller o actividad específica.",                                        price:100, cat:"Nivel 2 - Medio",     icon:"📝", stock:99 },
+  { id:"s7",  name:"Solución a un Ejercicio",  desc:"El mentor resuelve o da la respuesta de un punto difícil de un taller en el tablero.",                               price:120, cat:"Nivel 2 - Medio",     icon:"💡", stock:99 },
+  { id:"s8",  name:"Tiempo Libre 5 min",       desc:"Retírate a descansar o realizar una actividad libre 5 minutos antes de que termine la clase.",                       price:150, cat:"Nivel 2 - Medio",     icon:"⏰", stock:99 },
+  { id:"s9",  name:"Bono de Consulta",         desc:"Derecho a una pista o guía personalizada del mentor durante un examen o trabajo individual.",                        price:200, cat:"Nivel 2 - Medio",     icon:"🔍", stock:99 },
+  { id:"s10", name:"Líder de Dinámica",        desc:"Propón y dirige un juego o rompehielos de 5 minutos para iniciar la clase.",                                         price:250, cat:"Nivel 2 - Medio",     icon:"🎯", stock:99 },
+  { id:"s11", name:"Prórroga de Entrega 24h",  desc:"Derecho a entregar un trabajo un día después de la fecha límite sin penalización por impuntualidad.",                price:500, cat:"Nivel 3 - Alto",      icon:"📅", stock:99 },
+  { id:"s12", name:"Segunda Oportunidad",      desc:"Corrige una actividad con nota baja para subir la calificación (máximo hasta 4.0).",                                 price:600, cat:"Nivel 3 - Alto",      icon:"🔄", stock:99 },
+  { id:"s13", name:"Inmunidad al Reloj",       desc:"Permiso para llegar hasta 5 minutos tarde a una sesión sin registro de retraso. Uso único.",                         price:700, cat:"Nivel 3 - Alto",      icon:"⌚", stock:99 },
+  { id:"s14", name:"Monitor Oficial",          desc:"Asume el rol de asistente del mentor durante todo el día, con estatus y responsabilidades especiales.",               price:800, cat:"Nivel 3 - Alto",      icon:"🏅", stock:99 },
+  { id:"s15", name:"Exención de Punto",        desc:"Sáltate un punto o ejercicio de una evaluación o taller largo. Se califica como correcto.",                          price:1000,cat:"Nivel 3 - Alto",      icon:"⭐", stock:99 },
+  { id:"s16", name:"Clase Expandida",          desc:"¡Reto colectivo! Entre todos trasladan la sesión a un espacio abierto: canchas, jardín o biblioteca.",               price:2000,cat:"Nivel 4 - Colectivo", icon:"🌳", stock:99 },
+  { id:"s17", name:"Cine-Foro de Proyecto",    desc:"¡Reto colectivo! Cambien una sesión de teoría por un documental o película relacionada con los temas de clase.",     price:3000,cat:"Nivel 4 - Colectivo", icon:"🎬", stock:99 },
 ];
 
 const SEED_TXS = [
