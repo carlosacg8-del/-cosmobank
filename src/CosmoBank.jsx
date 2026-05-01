@@ -57,23 +57,23 @@ const SEED_USERS = [
 ];
 
 const SEED_STORE = [
-  { id:"s1",  name:"Salida al Baño",          desc:"Permiso de salida rápida sin afectar tu récord de permanencia en clase.",                                              price:10,  cat:"Nivel 1 - Básico",    icon:"🚻", stock:99 },
-  { id:"s2",  name:"Cambio de Puesto",         desc:"Derecho a elegir un lugar diferente por una sesión, siempre que no interfiera con el aprendizaje.",                   price:20,  cat:"Nivel 1 - Básico",    icon:"💺", stock:99 },
-  { id:"s3",  name:"DJ de la Tribu",           desc:"Elige la música ambiental (apta para el colegio) durante el trabajo autónomo de la clase.",                           price:30,  cat:"Nivel 1 - Básico",    icon:"🎵", stock:99 },
-  { id:"s4",  name:"Silla del Mentor",         desc:"Derecho a usar la silla especial de 'honor' del mentor durante la sesión.",                                           price:35,  cat:"Nivel 1 - Básico",    icon:"🪑", stock:99 },
-  { id:"s5",  name:"Pase de Cero Filas",       desc:"Ser el primero en salir al descanso o a la fila del refrigerio o transporte.",                                       price:50,  cat:"Nivel 1 - Básico",    icon:"🏃", stock:99 },
-  { id:"s6",  name:"10% Extra en una Nota",    desc:"Suma una décima a la calificación final de un taller o actividad específica.",                                        price:100, cat:"Nivel 2 - Medio",     icon:"📝", stock:99 },
-  { id:"s7",  name:"Solución a un Ejercicio",  desc:"El mentor resuelve o da la respuesta de un punto difícil de un taller en el tablero.",                               price:120, cat:"Nivel 2 - Medio",     icon:"💡", stock:99 },
-  { id:"s8",  name:"Tiempo Libre 5 min",       desc:"Retírate a descansar o realizar una actividad libre 5 minutos antes de que termine la clase.",                       price:150, cat:"Nivel 2 - Medio",     icon:"⏰", stock:99 },
-  { id:"s9",  name:"Bono de Consulta",         desc:"Derecho a una pista o guía personalizada del mentor durante un examen o trabajo individual.",                        price:200, cat:"Nivel 2 - Medio",     icon:"🔍", stock:99 },
-  { id:"s10", name:"Líder de Dinámica",        desc:"Propón y dirige un juego o rompehielos de 5 minutos para iniciar la clase.",                                         price:250, cat:"Nivel 2 - Medio",     icon:"🎯", stock:99 },
-  { id:"s11", name:"Prórroga de Entrega 24h",  desc:"Derecho a entregar un trabajo un día después de la fecha límite sin penalización por impuntualidad.",                price:500, cat:"Nivel 3 - Alto",      icon:"📅", stock:99 },
-  { id:"s12", name:"Segunda Oportunidad",      desc:"Corrige una actividad con nota baja para subir la calificación (máximo hasta 4.0).",                                 price:600, cat:"Nivel 3 - Alto",      icon:"🔄", stock:99 },
-  { id:"s13", name:"Inmunidad al Reloj",       desc:"Permiso para llegar hasta 5 minutos tarde a una sesión sin registro de retraso. Uso único.",                         price:700, cat:"Nivel 3 - Alto",      icon:"⌚", stock:99 },
-  { id:"s14", name:"Monitor Oficial",          desc:"Asume el rol de asistente del mentor durante todo el día, con estatus y responsabilidades especiales.",               price:800, cat:"Nivel 3 - Alto",      icon:"🏅", stock:99 },
-  { id:"s15", name:"Exención de Punto",        desc:"Sáltate un punto o ejercicio de una evaluación o taller largo. Se califica como correcto.",                          price:1000,cat:"Nivel 3 - Alto",      icon:"⭐", stock:99 },
-  { id:"s16", name:"Clase Expandida",          desc:"¡Reto colectivo! Entre todos trasladan la sesión a un espacio abierto: canchas, jardín o biblioteca.",               price:2000,cat:"Nivel 4 - Colectivo", icon:"🌳", stock:99 },
-  { id:"s17", name:"Cine-Foro de Proyecto",    desc:"¡Reto colectivo! Cambien una sesión de teoría por un documental o película relacionada con los temas de clase.",     price:3000,cat:"Nivel 4 - Colectivo", icon:"🎬", stock:99 },
+  { id:"s1",  name:"Salida al Bano",           desc:"Permiso de salida rapida sin afectar tu record de permanencia en clase.",                                         price:10,  cat:"Nivel 1 - Basico",    icon:"🚻", stock:99 },
+  { id:"s2",  name:"Cambio de Puesto",          desc:"Derecho a elegir un lugar diferente por una sesion, siempre que no interfiera con el aprendizaje.",              price:20,  cat:"Nivel 1 - Basico",    icon:"💺", stock:99 },
+  { id:"s3",  name:"DJ de la Tribu",            desc:"Elige la musica ambiental apta para el colegio durante el trabajo autonomo de la clase.",                        price:30,  cat:"Nivel 1 - Basico",    icon:"🎵", stock:99 },
+  { id:"s4",  name:"Silla del Mentor",          desc:"Derecho a usar la silla especial de honor del mentor durante la sesion.",                                        price:35,  cat:"Nivel 1 - Basico",    icon:"🪑", stock:99 },
+  { id:"s5",  name:"Pase de Cero Filas",        desc:"Ser el primero en salir al descanso o a la fila del refrigerio o transporte.",                                  price:50,  cat:"Nivel 1 - Basico",    icon:"🏃", stock:99 },
+  { id:"s6",  name:"10% Extra en una Nota",     desc:"Suma una decima a la calificacion final de un taller o actividad especifica.",                                   price:100, cat:"Nivel 2 - Medio",     icon:"📝", stock:99 },
+  { id:"s7",  name:"Solucion a un Ejercicio",   desc:"El mentor resuelve o da la respuesta de un punto dificil de un taller en el tablero.",                          price:120, cat:"Nivel 2 - Medio",     icon:"💡", stock:99 },
+  { id:"s8",  name:"Tiempo Libre 5 min",        desc:"Retirate a descansar o realizar una actividad libre 5 minutos antes de que termine la clase.",                  price:150, cat:"Nivel 2 - Medio",     icon:"⏰", stock:99 },
+  { id:"s9",  name:"Bono de Consulta",          desc:"Derecho a una pista o guia personalizada del mentor durante un examen o trabajo individual.",                   price:200, cat:"Nivel 2 - Medio",     icon:"🔍", stock:99 },
+  { id:"s10", name:"Lider de Dinamica",         desc:"Propone y dirige un juego o rompehielos de 5 minutos para iniciar la clase.",                                   price:250, cat:"Nivel 2 - Medio",     icon:"🎯", stock:99 },
+  { id:"s11", name:"Prorroga de Entrega 24h",   desc:"Derecho a entregar un trabajo un dia despues de la fecha limite sin penalizacion por impuntualidad.",           price:500, cat:"Nivel 3 - Alto",      icon:"📅", stock:99 },
+  { id:"s12", name:"Segunda Oportunidad",       desc:"Corrige una actividad con nota baja para subir la calificacion (maximo hasta 4.0).",                            price:600, cat:"Nivel 3 - Alto",      icon:"🔄", stock:99 },
+  { id:"s13", name:"Inmunidad al Reloj",        desc:"Permiso para llegar hasta 5 minutos tarde a una sesion sin registro de retraso. Uso unico.",                    price:700, cat:"Nivel 3 - Alto",      icon:"⌚", stock:99 },
+  { id:"s14", name:"Monitor Oficial",           desc:"Asume el rol de asistente del mentor durante todo el dia con estatus y responsabilidades especiales.",           price:800, cat:"Nivel 3 - Alto",      icon:"🏅", stock:99 },
+  { id:"s15", name:"Exencion de Punto",         desc:"Saltate un punto o ejercicio de una evaluacion o taller largo. Se califica como correcto.",                     price:1000,cat:"Nivel 3 - Alto",      icon:"⭐", stock:99 },
+  { id:"s16", name:"Clase Expandida",           desc:"Reto colectivo! Entre todos trasladan la sesion a un espacio abierto: canchas, jardin o biblioteca.",           price:2000,cat:"Nivel 4 - Colectivo", icon:"🌳", stock:99 },
+  { id:"s17", name:"Cine-Foro de Proyecto",     desc:"Reto colectivo! Cambien una sesion de teoria por un documental o pelicula relacionada con los temas de clase.", price:3000,cat:"Nivel 4 - Colectivo", icon:"🎬", stock:99 },
 ];
 
 const SEED_TXS = [
@@ -473,18 +473,17 @@ function Stars() {
 // ════════════════════════════════════════════
 // LOGIN SCREEN
 // ════════════════════════════════════════════
-function LoginScreen({ onLogin }) {
-  const [form, setForm] = useState({ username:"", password:"" });
+function LoginScreen({ onLogin, onRegister }) {
+  const [tab, setTab] = useState("login");
+  const [form, setForm] = useState({ username:"", password:"", name:"" });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const handle = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
     await new Promise(r => setTimeout(r, 400));
-    const ok = await onLogin(form.username, form.password);
-    if (!ok) setError("Usuario o contraseña incorrectos");
+    if (tab === "login") onLogin(form.username, form.password);
+    else await onRegister(form.name, form.username, form.password);
     setLoading(false);
   };
 
@@ -503,20 +502,36 @@ function LoginScreen({ onLogin }) {
         <div style={{fontSize:14, color:"rgba(255,255,255,0.85)", letterSpacing:"0.5px", fontStyle:"italic", marginBottom:24, fontFamily:"Poppins,sans-serif"}}>Tus conquistas, nuestro respaldo.</div>
       </div>
       <div className="login-card">
+        <div className="login-tabs">
+          <div className={`login-tab ${tab==="login"?"active":""}`} onClick={()=>setTab("login")}>Ingresar</div>
+          <div className={`login-tab ${tab==="register"?"active":""}`} onClick={()=>setTab("register")}>Registrarse</div>
+        </div>
         <form onSubmit={handle}>
+          {tab === "register" && (
+            <div className="form-group">
+              <label className="form-label">Nombre completo</label>
+              <input className="form-input" placeholder="Ej: Ana García" value={form.name} onChange={F("name")} required />
+            </div>
+          )}
           <div className="form-group">
             <label className="form-label">Usuario</label>
-            <input className="form-input" placeholder="Ej: Ana.Velez" value={form.username} onChange={F("username")} required autoCapitalize="none" />
+            <input className="form-input" placeholder={tab==="login" ? "Ej: ana" : "Crea tu usuario"} value={form.username} onChange={F("username")} required autoCapitalize="none" />
           </div>
           <div className="form-group">
             <label className="form-label">Contraseña</label>
             <input className="form-input" type="password" placeholder="••••••••" value={form.password} onChange={F("password")} required />
           </div>
-          {error && <div style={{color:"#FF4D6D", fontSize:13, marginBottom:12, textAlign:"center"}}>{error}</div>}
           <button className="btn btn-gold" type="submit" disabled={loading}>
-            {loading ? "⏳ Entrando..." : "🚀 Ingresar"}
+            {loading ? "⏳ Entrando..." : tab==="login" ? "🚀 Ingresar" : "✨ Crear cuenta"}
           </button>
         </form>
+        {tab === "login" && (
+          <div style={{marginTop:20, padding:16, background:"rgba(255,255,255,0.03)", borderRadius:12, fontSize:12, color:"var(--text3)"}}>
+            <div style={{fontWeight:700, marginBottom:8, color:"var(--text2)"}}>👤 Cuentas de prueba:</div>
+            <div>📚 Estudiante: <b style={{color:"var(--gold)"}}>ana / 1234</b></div>
+            <div>👨‍🏫 Profesor: <b style={{color:"var(--gold)"}}>profesor / cosmo2024</b></div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -1637,7 +1652,7 @@ export default function CosmoBank() {
       <style>{CSS}</style>
       <Stars />
       {toast && <div className={`toast toast-${toast.type}`}>{toast.msg}</div>}
-      {screen === "login" && <LoginScreen onLogin={login} />}
+      {screen === "login" && <LoginScreen onLogin={login} onRegister={register} />}
       {screen === "app" && (
         <AppShell
           currentUser={currentUser} users={users} transactions={transactions}
