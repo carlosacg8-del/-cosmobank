@@ -1010,7 +1010,7 @@ function ProfileScreen({ currentUser, transactions, purchases, onLogout }) {
 // ════════════════════════════════════════════
 // ADMIN SCREEN
 // ════════════════════════════════════════════
-function AdminScreen({ users, loans, transactions, store, onApproveLoan, onRejectLoan, onAddCoins, saveStore, showToast }) {
+function AdminScreen({ users, loans, transactions, store, onApproveLoan, onRejectLoan, onAddCoins, onAddCoinsAll, saveStore, showToast }) {
   const [adminTab, setAdminTab] = useState("students");
   const [selectedUser, setSelectedUser] = useState(null);
   const [coinsAmount, setCoinsAmount] = useState("");
@@ -1163,8 +1163,8 @@ function AdminScreen({ users, loans, transactions, store, onApproveLoan, onRejec
               <input className="form-input" type="number" placeholder="CC a todos" style={{flex:1}} id="bulk-amount" />
               <button className="btn btn-cyan btn-sm" onClick={async ()=>{
                 const amt = parseInt(document.getElementById("bulk-amount").value);
-                if (!amt) return;
-                for (const s of students) { await onAddCoins(s.id, amt, "Premio grupal 🌟"); }
+                if (!amt || amt <= 0) { showToast("Escribe una cantidad ❌","error"); return; }
+                await onAddCoinsAll(amt, "Premio grupal 🌟");
                 document.getElementById("bulk-amount").value = "";
               }}>Enviar a todos</button>
             </div>
@@ -1573,6 +1573,22 @@ export default function CosmoBank() {
     showToast(`🪙 +${amount} CC enviados`);
   };
 
+  const addCoinsAll = async (amount, reason) => {
+    if (!amount || amount <= 0) { showToast("Cantidad inválida ❌", "error"); return; }
+    const students = users.filter(u => u.role === "student");
+    const now = new Date().toISOString();
+    const newUsers = users.map(u =>
+      u.role === "student" ? {...u, balance: u.balance + amount} : u
+    );
+    const newTxs = students.map(u => ({
+      id: genId("t"), from: "admin", to: u.id, amount,
+      type: "reward", desc: reason || "Premio grupal 🌟", date: now
+    }));
+    await saveUsers(newUsers);
+    await saveTxs([...newTxs, ...transactions]);
+    showToast(`🌟 +${amount} CC enviados a ${students.length} estudiantes`);
+  };
+
   const depositSavings = async (amount) => {
     const user = users.find(u=>u.id===currentUser.id);
     if (user.balance < amount) { showToast("Saldo insuficiente ❌","error"); return false; }
@@ -1645,7 +1661,7 @@ export default function CosmoBank() {
           activeTab={activeTab} setActiveTab={setActiveTab}
           onLogout={logout} onTransfer={transfer} onRequestLoan={requestLoan}
           onApproveLoan={approveLoan} onRejectLoan={rejectLoan}
-          onBuyItem={buyItem} onAddCoins={addCoins}
+          onBuyItem={buyItem} onAddCoins={addCoins} onAddCoinsAll={addCoinsAll}
           showToast={showToast} saveStore={saveStore}
           savings={savings} onDepositSavings={depositSavings} onWithdrawSavings={withdrawSavings} onApplyInterest={applyInterest}
         />
